@@ -2200,8 +2200,11 @@ SOKOL_API_IMPL void simgui_setup(const simgui_desc_t* desc) {
     // initialize Dear ImGui
     #if defined(__cplusplus)
         ImGui::CreateContext();
-        ImGui::StyleColorsDark();
+
         ImGuiIO* io = &ImGui::GetIO();
+        io->ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // Enable Docking
+
+        ImGui::StyleColorsDark();
         if (!_simgui.desc.no_default_font) {
             io->Fonts->AddFontDefault();
         }
